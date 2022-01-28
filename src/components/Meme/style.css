@@ -1,0 +1,40 @@
+body {
+	background: linear-gradient(to right, #68d834, #9ce27c);
+}
+.meme {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container-image {
+	padding: 50px 0;
+}
+
+.meme__img {
+	max-width: 280px;
+}
+
+.options {
+	min-width: 400px;
+}
+
+.options__group {
+	display: flex;
+	justify-content: space-around;
+}
+
+.options__btn {
+	font-size: 20px;
+	border: none;
+	padding: 10px 20px;
+	background: #c9dbc0;
+	font-family: cursive;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.options__btn:hover {
+	background: #a9c49a;
+
+}
