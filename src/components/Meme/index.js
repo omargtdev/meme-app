@@ -39,10 +39,10 @@ const Meme = () => {
   const [currentMeme, dispatch] = useReducer(
     reducer, 
     { number : getRandom0to99(),
-      meme : { url : "#", name : "" },
+      meme : { url : "#", name : "", box_count : 0 }
     }
   );
-  //const [number, setNumber] = useState(getRandom0to99());
+  const [captions, setCaptions] = useState([])
 
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes").then(res => {
@@ -61,6 +61,24 @@ const Meme = () => {
     }
   }, [memes])
 
+  // change the boxes of text only when it changes its count
+  useEffect(() => {
+    if(memes.length){
+      setCaptions(
+        Array(currentMeme.meme.box_count)
+          .fill('')
+        .map((el, i) => {
+          const element = document.querySelector(`#TextBox${i}`);
+          return element ? element.value.trim() : el;
+        })
+      );
+    }
+  }, [currentMeme.meme.box_count])
+
+  useEffect(() => {
+    console.log(captions);
+  }, [captions]);
+
   return(
     <div className="meme">
       {memes.length ? 
@@ -70,7 +88,10 @@ const Meme = () => {
         </div>
         <Options 
           memes={memes}
+          currentMeme={currentMeme.meme}
           dispatch={dispatch}
+          captions={captions}
+          setCaptions={setCaptions}
         />
       </>
       : <h2>Wait please...</h2>}
