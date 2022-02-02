@@ -53,6 +53,12 @@ body {
 	cursor: pointer;
 }
 
+.options__btn--a-version {
+	text-align: center;
+	text-decoration: none;
+	color: #000;
+}
+
 .options__btn:hover {
 	background: #a9c49a;
 

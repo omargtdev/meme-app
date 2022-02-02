@@ -1,5 +1,21 @@
 
 const MemeGenerated = ({ meme, setMemeGenerated }) => {
+
+  const downloadMeme = async () => {
+    const img = await fetch(meme.url);
+    const imgBlob = await img.blob();
+    const imgURLToDownload = URL.createObjectURL(imgBlob);
+
+    const link = document.createElement('a');
+    link.style.display = "none";
+    link.href = imgURLToDownload;
+    link.download = "meme.jpg"
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   return(
     <>
       <div className="container-image">
@@ -11,7 +27,8 @@ const MemeGenerated = ({ meme, setMemeGenerated }) => {
           onClick={() => setMemeGenerated({ isGenerated : false })}
         >Back
         </button>
-        <button className="options__btn">Download</button>
+        <button className="options__btn" onClick={downloadMeme}>Download</button>
+        <a className="options__btn options__btn--a-version" href={meme.url} target="_blank" rel="noreferrer">See better</a>
       </div>
     </>
   );
