@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import EditMeme from "./EditMeme";
-import GenerateMeme from "./GenerateMeme";
+import MemeGenerated from "./MemeGenerated";
+import Message from "./Message";
 
 import "./style.css";
 
@@ -29,19 +30,19 @@ const Meme = () => {
     <div className="meme">
       {memeGenerated.isGenerated ? (
         memeGenerated.url ? (
-          <GenerateMeme
+          <MemeGenerated
             meme={memeGenerated}
             setMemeGenerated={setMemeGenerated}
           />
         // TODO: Improve waiting message
-        ) : <h2>Wait please ...</h2>        
+      ) : <Message classType='msg--info' />      
       ) : memes.length ? (
         <EditMeme 
           memes={memes} 
           setMemeGenerated={setMemeGenerated} 
         />
       ) : (
-        <h2>Wait please...</h2>
+        <Message classType='msg--info' />
       )}
     </div>
   );

@@ -1,6 +1,8 @@
 body {
+	font-family: cursive;
 	background: linear-gradient(to right, #68d834, #9ce27c);
 }
+
 .meme {
 	display: flex;
 	flex-direction: column;
@@ -13,6 +15,10 @@ body {
 
 .meme__img {
 	max-width: 280px;
+}
+
+.options-container {
+	margin-bottom: 50px;
 }
 
 .options {
@@ -43,7 +49,6 @@ body {
 	border: none;
 	padding: 10px 20px;
 	background: #c9dbc0;
-	font-family: cursive;
 	border-radius: 10px;
 	cursor: pointer;
 }
@@ -53,3 +58,21 @@ body {
 
 }
 
+.msg {
+	text-align: center;
+	padding: 20px;
+	margin: 15px 0;
+	font-size: 20px;
+	background: #000;
+	color: #fff;
+}
+
+.msg--error {
+	background: #ac1e1e;
+}
+
+.msg--info {
+	background: none;
+	font-size: 30px;
+	color: #000;
+}
